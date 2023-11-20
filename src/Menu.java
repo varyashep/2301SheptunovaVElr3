@@ -1,9 +1,11 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Menu {
 
-    static int size = 100000;
+    static int size = 40000;
     int displayTreesChoice() {
         System.out.println("Выберите структуру данных: ");
         System.out.println("1. Бинарное дерево поиска");
@@ -63,11 +65,17 @@ public class Menu {
                 }
             } while (!finishedInput);
         } else if (choice == 2) {
-            Random rand1 = new Random();
+            /*Random rand1 = new Random();
             int element1;
             for (int i = 0; i < size; i++) {
                 element1 = rand1.nextInt(upperbound);
                 bt.add(element1);
+            }*/
+            ArrayList<Integer> list = new ArrayList<Integer>();
+            for (int i=1; i<size*100; i++) list.add(i);
+            Collections.shuffle(list);
+            for (int i = 0; i < size; i++) {
+                bt.add(list.get(i));
             }
         }
         return bt;
@@ -96,18 +104,24 @@ public class Menu {
                 }
             } while (!finishedInput);
         } else if (choice == 2) {
-            Random rand1 = new Random();
+            /*Random rand1 = new Random();
             int element1;
             for (int i = 0; i < size; i++) {
                 element1 = rand1.nextInt(upperbound);
                 avlTree.add(element1);
+            }*/
+            ArrayList<Integer> list = new ArrayList<Integer>();
+            for (int i=1; i<size*100; i++) list.add(i);
+            Collections.shuffle(list);
+            for (int i = 0; i < size; i++) {
+                avlTree.add(list.get(i));
             }
         }
         return avlTree;
     }
 
-    BinarySearchTree createRBTree() {
-        BinarySearchTree rbTree = new RedBlackTree();
+  BinarySearchTree createRBTree() {
+        RedBlackTree rbTree = new RedBlackTree();
         System.out.println("Выберите вариант заполнения начального дерева: ");
         System.out.println("1. Вручную");
         System.out.println("2. Рандом");
@@ -129,11 +143,17 @@ public class Menu {
                 }
             } while (!finishedInput);
         } else if (choice == 2) {
-            Random rand1 = new Random();
+            /*Random rand1 = new Random();
             int element1;
             for (int i = 0; i < size; i++) {
                 element1 = rand1.nextInt(upperbound);
                 rbTree.add(element1);
+            }*/
+            ArrayList<Integer> list = new ArrayList<Integer>();
+            for (int i=1; i<size*100; i++) list.add(i);
+            Collections.shuffle(list);
+            for (int i = 0; i < size; i++) {
+                rbTree.add(list.get(i));
             }
         }
         return rbTree;
@@ -141,7 +161,7 @@ public class Menu {
 
     int chooseAction() {
         System.out.println();
-        System.out.println("Выберите действие для работы со списком: ");
+        System.out.println("Выберите действие для работы с деревом: ");
         System.out.println("1. Добавить элемент");
         System.out.println("2. Удалить элемент");
         System.out.println("3. ВЫЙТИ");

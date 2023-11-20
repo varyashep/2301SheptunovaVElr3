@@ -220,6 +220,7 @@ public class RedBlackTree extends BinarySearchTree{
     }
 
     private Node deleteWithZeroOrOneChild(Node node) {
+        Node newChild;
         if (node.leftChild != null) {
             replaceChild(node.parent, node, node.leftChild);
             return node.leftChild;
@@ -229,12 +230,12 @@ public class RedBlackTree extends BinarySearchTree{
             return node.rightChild;
         }
         else {
-            Node newChild;
             if (node.color == Color.BLACK) {
                 newChild = new NilNode();
             } else {
                 newChild = null;
             }
+            replaceChild(node.parent, node, newChild);
             return newChild;
         }
     }
